@@ -1,0 +1,16 @@
+---
+layout: single
+title:  "AWS 사소한 꿀팁(feat.비용절감)"
+toc: true
+toc_sticky: true
+
+last_modified_at: 2024-07-19 17:06:52 +0900
+date:   2024-07-19 14:15:52 +0900
+
+categories: 
+- aws
+tags: 
+- [aws]
+---
+이 글은 꿀팁이 추가될 때마다 추가할 예정이다.
+

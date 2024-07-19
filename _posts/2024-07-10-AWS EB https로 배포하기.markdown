@@ -1,9 +1,17 @@
 ---
 layout: single
 title:  "AWS EB https로 배포하기"
+
+categories: 
+    - aws
+tags: 
+    - [aws, backend, nodejs]
+
+toc: true
+toc_sticky: true
+
 date:   2024-07-10 15:03:52 +0900
-categories: aws
-tags: [aws, backend, nodejs]
+last_modified_at: 2024-07-10 15:03:52 +0900
 ---
 # 서론
 aws에 https로 배포하기를 매번 찾아보기 귀찮아서 이 글을 작성해봅니다. 이 글은 AWS Elsatic Beanstalk 기준으로 작성되었음을 알려드립니다. 왜 이런 식으로 하는지는 저도 잘 모르고 그냥 과정만 정리했으니 참고부탁드립니다. Nodejs 백엔드가 이미 EB에 업로드 되어 있다는 전제 하에 작성된 글입니다.

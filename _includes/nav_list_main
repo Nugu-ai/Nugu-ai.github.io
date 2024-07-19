@@ -1,0 +1,60 @@
+<!--전체 글 수를 세기 위한 연산. sum 변수에 전체 글 수 저장-->
+
+{% assign sum = site.posts | size %}
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">{{ site.data.ui-text[site.locale].menu_label }}</label>
+  <ul class="nav__items" id="category_tag_menu">
+      <!--전체 글 수-->
+      <li>
+            📂 <span style="font-family:'Cafe24Oneprettynight';">전체 글 수</style> <span style="font-family:'Coming Soon';">{{sum}}</style> <span style="font-family:'Cafe24Oneprettynight';">개</style> 
+      </li>
+      <li>
+        <span class="nav__sub-title">Paper/Study</span>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "basic" %}
+                        <li><a href="/categories/basic" class="">배경지식(평가지표) ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "video" %}
+                        <li><a href="/categories/video" class="">Video ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "multimodal" %}
+                        <li><a href="/categories/multimodal" class="">Multimodal ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        <span class="nav__sub-title">Deploy</span>
+            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+            <ul>
+                <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
+                {% for category in site.categories %}
+                    {% if category[0] == "aws" %}
+                        <li><a href="/categories/aws" class="">AWS ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+      </li>
+      <li>	
+            <br>
+            <style>
+                .hits {
+                    width: auto; height: auto;
+                    max-width: 99px;
+                    max-height: 20px;
+                }
+            </style>     
+            <img class="hits" src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fnugu-ai.github.io&count_bg=%231E227D&title_bg=%23000000&icon=&icon_color=%23E7E7E7&title=visitors&edge_flat=false"/>
+      </li>
+  </ul>
+</nav>

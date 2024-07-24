@@ -3,7 +3,6 @@ layout: single
 title:  "AWS 나노한 꿀팁(feat.비용절감)"
 toc: true
 toc_sticky: true
-mathjax: true
 
 last_modified_at: 2024-07-19 17:06:52 +0900
 date:   2024-07-19 14:15:52 +0900

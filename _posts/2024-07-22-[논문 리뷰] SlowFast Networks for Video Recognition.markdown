@@ -3,7 +3,6 @@ layout: single
 title:  "[논문 리뷰] SlowFast Networks for Video Recognition"
 toc: true
 toc_sticky: true
-mathjax: true
 
 last_modified_at: 2024-07-22 17:51:52 +0900
 date:   2024-07-22 17:51:52 +0900
@@ -71,10 +70,10 @@ feature shape of fast pathway: $\{\alpha T, S^2, \beta C\}$
 
 1. Time-to-channel: 모든 $\alpha$ frame을 한 프레임의 channel로 이동
     
-    $\{\alpha T, S^2, \beta C\}$ → $\{T, S^2, \alpha \beta C\}$ 
+    $\\{\alpha T, S^2, \beta C\\}$ → $\\{T, S^2, \alpha \beta C\\}$ 
     
 2. Time-strided sampling: 매 $\alpha$ frame마다 하나씩 sampling
     
-    $\{\alpha T, S^2, \beta C\}$ → $\{T, S^2, \beta C\}$
+    $\\{\alpha T, S^2, \beta C\\}$ → $\\{T, S^2, \beta C\\}$
     
 3. Time-strided convolution: 5x1^2 kernal, $2\beta C$ output channels, stride=$\alpha$인 3D convolution 수행

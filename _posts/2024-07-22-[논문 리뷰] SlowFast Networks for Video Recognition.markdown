@@ -3,6 +3,7 @@ layout: single
 title:  "[논문 리뷰] SlowFast Networks for Video Recognition"
 toc: true
 toc_sticky: true
+use_math: true
 
 last_modified_at: 2024-07-22 17:51:52 +0900
 date:   2024-07-22 17:51:52 +0900

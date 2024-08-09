@@ -339,3 +339,4 @@ defaults:
       show_date: true
       sidebar_main: true
       mathjax: true
+      use_math: true

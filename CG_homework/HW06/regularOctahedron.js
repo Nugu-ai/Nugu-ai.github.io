@@ -186,43 +186,58 @@ export class regularOctahedron {
             }
         }
 
-        const stripeCount = 4; // 4개 구간
-        const nFaces = 8; // 삼각형 면 개수
-        const vertsPerFace = 3; // 한 면당 버텍스 수
+        this.texCoords = new Float32Array([
+            0.5,
+            1.0, // 위쪽 정점
+            0.0,
+            0.5, // 왼쪽 하단
+            0.25,
+            0.5, // 오른쪽 하단 - front-up
+            0.5,
+            1.0,
+            0.25,
+            0.5,
+            0.5,
+            0.5, // - right-up
+            0.5,
+            1.0,
+            0.5,
+            0.5,
+            0.75,
+            0.5, // - back-up
+            0.5,
+            1.0,
+            0.75,
+            0.5,
+            1.0,
+            0.5, // - left-up
+            0.0,
+            0.5,
+            0.5,
+            0.0,
+            0.25,
+            0.5, // - front-down
+            0.25,
+            0.5,
+            0.5,
+            0.0,
+            0.5,
+            0.5, // - right-down
+            0.5,
+            0.5,
+            0.5,
+            0.0,
+            0.75,
+            0.5, // - back-down
+            0.75,
+            0.5,
+            0.5,
+            0.0,
+            1.0,
+            0.5, // - left-down
+        ]);
 
-        // face 인덱스 → stripe 인덱스 매핑
-        // 0=front-up,1=right-up,2=back-up,3=left-up,4=right-down,5=back-down,6=left-down,7=front-down
-        const stripeIdxMap = [0, 1, 2, 3, 0, 1, 2, 3];
 
-        this.texCoords = new Float32Array(nFaces * vertsPerFace * 2);
-
-        for (let face = 0; face < nFaces; face++) {
-            const stripe = stripeIdxMap[face];
-            const u0 = stripe / stripeCount;
-            const u1 = (stripe + 1) / stripeCount;
-
-            // 위쪽 면이면 apex→v=1, base→v=0,
-            // 아래쪽 면이면 apex→v=0, base→v=1
-            const isUp = face < 4;
-            const vA = isUp ? 1 : 0;
-            const vB = isUp ? 0 : 1;
-
-            const base = face * vertsPerFace * 2;
-            // vertices 배열에서 첫 점이 apex라 가정
-            this.texCoords.set(
-                [
-                    u0,
-                    vA, // apex
-                    u1,
-                    vB, // 두 번째 점
-                    u0,
-                    vB, // 세 번째 점
-                ],
-                base
-            );
-        }
-
-        // 수정된 인덱스 (8 faces × 3 verts = 24)
         this.indices = new Uint16Array([
             // top pyramid (4 faces)
             0,

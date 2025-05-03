@@ -26,7 +26,7 @@ let modelMatrix = mat4.create();
 const axes = new Axes(gl, 1.5);
 
 // 텍스처 로드
-const texture = loadTexture(gl, true, "../images/textures/1.png");
+const texture = loadTexture(gl, true, "../images/textures/sunrise.jpg");
 
 // 정팔면체 인스턴스 생성 (Cube → regularOctahedron)
 const octahedron = new regularOctahedron(gl);

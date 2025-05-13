@@ -5,10 +5,10 @@ precision highp float;
 out vec4 FragColor;
 in vec3 fragPos;  
 in vec3 normal;  
-in vec2 texCoord;
+// in vec2 texCoord;
 
 struct Material {
-    sampler2D diffuse; // diffuse map
+    vec3 diffuse; // diffuse map
     vec3 specular;     // 표면의 specular color
     float shininess;   // specular 반짝임 정도
 };
@@ -25,9 +25,11 @@ uniform Material material;
 uniform Light light;
 uniform vec3 u_viewPos;
 
+uniform float toonLevels;
+
 void main() {
     // ambient
-    vec3 rgb = texture(material.diffuse, texCoord).rgb;
+    vec3 rgb = material.diffuse;
     vec3 ambient = light.ambient * rgb;
   	
     // diffuse 
@@ -36,11 +38,12 @@ void main() {
     vec3 lightDir = normalize(light.direction);
     float dotNormLight = dot(norm, lightDir);
     float diff = max(dotNormLight, 0.0);
-    vec3 diffuse = light.diffuse * diff * rgb;  
+    float diffQ = floor(diff * toonLevels) / toonLevels;
+    vec3 diffuse = light.diffuse * diffQ * rgb;  
     
     // specular
     vec3 viewDir = normalize(u_viewPos - fragPos);
-    vec3 reflectDir = reflect(lightDir, norm);
+    vec3 reflectDir = reflect(-lightDir, norm);
 
     float dotViewDirReflectDir = dot(viewDir, reflectDir);
     float spec;
@@ -49,8 +52,8 @@ void main() {
     }
     else spec = 0.0f;
 
-
-    vec3 specular = light.specular * spec * material.specular;  
+    float specQ = floor(spec * toonLevels) / toonLevels;
+    vec3 specular = light.specular * specQ * material.specular;  
         
     vec3 result = ambient + diffuse + specular;
     FragColor = vec4(result, 1.0);
